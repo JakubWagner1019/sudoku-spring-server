@@ -5,5 +5,22 @@
 </head>
 <body>
     <h1 th:text="${'Hello ' + name + '!'}"></h1>
+    <table>
+        <caption>All sudokus</caption>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Created</th>
+                <th scope="col">Play</th>
+            </tr>
+        </thead>
+        <tr th:each="signature : ${sudokuList}">
+            <td th:text="${signature.getName()}"></td>
+            <td th:text="${signature.getRating()}"></td>
+            <td th:text="${signature.getFormattedLocalDateTime()}"></td>
+            <td><a th:href="@{/sudoku/play/{id}(id=${signature.getId()})}">Click me</a></td>
+        </tr>
+    </table>
 </body>
 </html>
