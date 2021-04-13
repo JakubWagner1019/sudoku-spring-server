@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Sudoku</title>
+    <link rel="stylesheet" th:href="@{/styles/play.css}">
+</head>
+<body>
+<h1>Creating sudoku</h1>
+<a th:href="@{/admin}">Back</a>
+<form th:action="@{/admin/sudoku/create}" method="post">
+    <label>
+        Name
+        <input type="text" name="name">
+    </label>
+    <table id="sudoku-table">
+        <tr th:each="i : ${#numbers.sequence(1,9)}">
+            <td class="sudoku-cell" th:each="j : ${#numbers.sequence(1,9)}">
+                <input type="number" name="param[]"/>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" name="Submit"/>
+</form>
+</body>
+</html>

@@ -22,6 +22,6 @@ public class MainController {
         List<SudokuSignature> sudokuSignatures = sudokuService.getSudokuSignatures();
         model.addAttribute("name","Sir");
         model.addAttribute("sudokuList",sudokuSignatures);
-        return "index";
+        return Views.INDEX;
     }
 }

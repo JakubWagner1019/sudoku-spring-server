@@ -10,11 +10,11 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/sudoku")
-public class SudokuController {
+public class PlayerController {
 
     private final SudokuService sudokuService;
 
-    public SudokuController(SudokuService sudokuService) {
+    public PlayerController(SudokuService sudokuService) {
         this.sudokuService = sudokuService;
     }
 
@@ -23,9 +23,9 @@ public class SudokuController {
         Optional<SudokuGrid> sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
         if (sudokuGrid.isPresent()) {
             model.addAttribute("sudoku",sudokuGrid.get());
-            return "play";
+            return Views.PLAY;
         }
         model.addAttribute("error", String.format("No sudoku with id: %d",id));
-        return "error";
+        return Views.ERROR;
     }
 }

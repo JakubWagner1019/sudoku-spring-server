@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Sudoku</title>
+</head>
+<body>
+    <h1 th:text="${'Hello ' + name + '!'}"></h1>
+    <a th:href="@{/admin/sudoku/create}">Create a sudoku</a>
+    <table>
+        <caption>All sudokus</caption>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Favourites</th>
+                <th scope="col">Created</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tr th:each="signature : ${sudokuList}">
+            <td th:text="${signature.getName()}"></td>
+            <td th:text="${signature.getFavourites()}"></td>
+            <td th:text="${signature.getFormattedLocalDateTime()}"></td>
+            <td><a th:href="@{/admin/sudoku/edit/{id}(id=${signature.getId()})}">Edit</a></td>
+            <td><a th:href="@{/admin/sudoku/delete/{id}(id=${signature.getId()})}">Delete</a></td>
+        </tr>
+    </table>
+</body>
+</html>
