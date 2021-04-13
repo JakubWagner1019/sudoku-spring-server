@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MockSudokuService implements SudokuService {
@@ -19,18 +20,18 @@ public class MockSudokuService implements SudokuService {
     }
 
     @Override
-    public SudokuGrid getUnsolvedSudokuById(long id) {
-        if(id > 5) return null;
+    public Optional<SudokuGrid> getUnsolvedSudokuById(long id) {
+        if(id > 5) return Optional.empty();
         SudokuGrid grid = new TableBasedSudokuGrid();
         grid.addElement(1,1,9);
         grid.addElement(1, 2, 8);
         grid.addElement(1,3,7);
-        return grid;
+        return Optional.of(grid);
     }
 
     @Override
-    public SudokuGrid getSolvedSudokuById(long id) {
-        return null;
+    public Optional<SudokuGrid> getSolvedSudokuById(long id) {
+        return Optional.empty();
     }
 
     @Override

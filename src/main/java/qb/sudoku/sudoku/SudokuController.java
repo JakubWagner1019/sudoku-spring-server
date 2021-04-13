@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/sudoku")
 public class SudokuController {
@@ -18,8 +20,12 @@ public class SudokuController {
 
     @GetMapping("/play/{id}")
     public String getSudoku(Model model, @PathVariable int id){
-        SudokuGrid sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
-        model.addAttribute("sudoku",sudokuGrid);
-        return "play";
+        Optional<SudokuGrid> sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
+        if (sudokuGrid.isPresent()) {
+            model.addAttribute("sudoku",sudokuGrid.get());
+            return "play";
+        }
+        model.addAttribute("error", String.format("No sudoku with id: %d",id));
+        return "error";
     }
 }

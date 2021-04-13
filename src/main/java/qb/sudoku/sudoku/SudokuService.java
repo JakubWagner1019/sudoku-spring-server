@@ -1,6 +1,7 @@
 package qb.sudoku.sudoku;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SudokuService {
 
@@ -14,13 +15,13 @@ public interface SudokuService {
      * @param id Sudoku's id, usually provided by SudokuSignature.getId() or addSudoku(String,Sudoku)
      * @return Sudoku's grid (only given digits)
      */
-    SudokuGrid getUnsolvedSudokuById(long id);
+    Optional<SudokuGrid> getUnsolvedSudokuById(long id);
 
     /**
      * @param id Sudoku's id, usually provided by SudokuSignature.getId() or addSudoku(String,Sudoku)
      * @return Sudoku's grid (all)
      */
-    SudokuGrid getSolvedSudokuById(long id);
+    Optional<SudokuGrid> getSolvedSudokuById(long id);
 
     /**
      * @param name Name that will be sudoku's signature
