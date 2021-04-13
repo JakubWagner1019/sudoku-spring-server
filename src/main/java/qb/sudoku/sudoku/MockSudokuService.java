@@ -3,7 +3,7 @@ package qb.sudoku.sudoku;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,11 +12,11 @@ public class MockSudokuService implements SudokuService {
 
     @Override
     public List<SudokuSignature> getSudokuSignatures() {
-        List<SudokuSignature> sudokuSignatures = new LinkedList<>();
-        sudokuSignatures.add(new SudokuSignature("An easy sudoku", 1, 5.0f, LocalDateTime.now().minusDays(4)));
-        sudokuSignatures.add(new SudokuSignature("A medium sudoku", 2, 4.0f, LocalDateTime.now().minusDays(3)));
-        sudokuSignatures.add(new SudokuSignature("A hard sudoku", 3, 3.0f, LocalDateTime.now().minusDays(2)));
-        return sudokuSignatures;
+        return Arrays.asList(
+                new SudokuSignature("An easy sudoku", 1, 12, LocalDateTime.now().minusDays(4)),
+                new SudokuSignature("A medium sudoku", 2, 30, LocalDateTime.now().minusDays(3)),
+                new SudokuSignature("A hard sudoku", 3, 40, LocalDateTime.now().minusDays(2))
+        );
     }
 
     @Override
@@ -50,9 +50,10 @@ public class MockSudokuService implements SudokuService {
     }
 
     @Override
-    public boolean rateSudoku(long id, short rating) {
+    public boolean makeSudokuFavourite(long id) {
         return false;
     }
+
 
     @Override
     public SudokuVerificationStatus verify(long id, SudokuGrid sudokuGrid) {

@@ -46,11 +46,10 @@ public interface SudokuService {
     boolean deleteSudoku(long id);
 
     /**
-     * @param id Id of sudoku to be rated
-     * @param rating Sudoku value
+     * @param id Id of sudoku to be added to favourites
      * @return True if operation successful, false if not
      */
-    boolean rateSudoku(long id, short rating);
+    boolean makeSudokuFavourite(long id);
 
 
     /**

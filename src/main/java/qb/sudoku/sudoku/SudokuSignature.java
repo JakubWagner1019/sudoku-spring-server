@@ -8,13 +8,13 @@ public class SudokuSignature {
 
     private final String name;
     private final long id;
-    private final float rating;
+    private final int favourites;
     private final LocalDateTime localDateTime;
 
-    public SudokuSignature(String name, long id, float rating, LocalDateTime localDateTime) {
+    public SudokuSignature(String name, long id, int favourites, LocalDateTime localDateTime) {
         this.name = name;
         this.id = id;
-        this.rating = rating;
+        this.favourites = favourites;
         this.localDateTime = localDateTime;
     }
 
@@ -26,8 +26,8 @@ public class SudokuSignature {
         return id;
     }
 
-    public float getRating() {
-        return rating;
+    public int getFavourites() {
+        return favourites;
     }
 
     public LocalDateTime getLocalDateTime() {

@@ -10,14 +10,14 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Rating</th>
+                <th scope="col">Favourites</th>
                 <th scope="col">Created</th>
                 <th scope="col">Play</th>
             </tr>
         </thead>
         <tr th:each="signature : ${sudokuList}">
             <td th:text="${signature.getName()}"></td>
-            <td th:text="${signature.getRating()}"></td>
+            <td th:text="${signature.getFavourites()}"></td>
             <td th:text="${signature.getFormattedLocalDateTime()}"></td>
             <td><a th:href="@{/sudoku/play/{id}(id=${signature.getId()})}">Click me</a></td>
         </tr>
