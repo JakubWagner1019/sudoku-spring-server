@@ -43,14 +43,28 @@ public class AdminController {
     public String doCreate(@RequestParam(name = "name") String name, @RequestParam(name = "param[]") String[] params) {
         logger.info("Creating");
         logger.info(name);
-        logger.info("{}",Arrays.asList(params));
-        sudokuService.addSudoku(name, convert(params), null);
+        logger.info("{}", Arrays.asList(params));
+        SudokuGrid unsolved = convert(params);
+        sudokuService.addSudoku(name, unsolved, null);
         return "redirect:/admin";
     }
 
-    private SudokuGrid convert(String[] params){
-        // TODO: 13/04/2021 implement converting
-        return null;
+    // TODO: 14/04/2021 move somewhere else
+    private SudokuGrid convert(String[] params) throws IllegalArgumentException, NumberFormatException {
+        if (params.length != 81) {
+            throw new IllegalArgumentException("There needs to be 81 elements in the array creating a sudoku");
+        }
+        SudokuGrid grid = new TableBasedSudokuGrid();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                String param = params[i * 9 + j];
+                if (!param.equals("")) {
+                    int parsedInt = Integer.parseInt(param);
+                    grid.addElement(i + 1, j + 1, parsedInt);
+                }
+            }
+        }
+        return grid;
     }
 
     @GetMapping("/sudoku/edit/{id}")
