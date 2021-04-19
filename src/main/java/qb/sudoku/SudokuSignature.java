@@ -1,4 +1,4 @@
-package qb.sudoku.sudoku;
+package qb.sudoku;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,6 +10,10 @@ public class SudokuSignature {
     private final long id;
     private final int favourites;
     private final LocalDateTime localDateTime;
+
+    public SudokuSignature(String name, long id) {
+        this(name, id, 0, LocalDateTime.now());
+    }
 
     public SudokuSignature(String name, long id, int favourites, LocalDateTime localDateTime) {
         this.name = name;

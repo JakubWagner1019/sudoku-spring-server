@@ -1,4 +1,4 @@
-package qb.sudoku.sudoku;
+package qb.sudoku;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -54,10 +53,10 @@ public class AdminController {
         if (params.length != 81) {
             throw new IllegalArgumentException("There needs to be 81 elements in the array creating a sudoku");
         }
-        SudokuGrid grid = new TableBasedSudokuGrid();
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                String param = params[i * 9 + j];
+        SudokuGrid grid = new TableBasedSudokuGrid(9);
+        for (int i = 0; i < grid.getSideLength(); i++) {
+            for (int j = 0; j < grid.getSideLength(); j++) {
+                String param = params[i * grid.getSideLength() + j];
                 if (!param.equals("")) {
                     int parsedInt = Integer.parseInt(param);
                     grid.addElement(i + 1, j + 1, parsedInt);
@@ -69,24 +68,16 @@ public class AdminController {
 
     @GetMapping("/sudoku/edit/{id}")
     public String getEditPage(Model model, @PathVariable long id) {
-        Optional<SudokuGrid> sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
-        if (sudokuGrid.isPresent()) {
-            model.addAttribute("sudoku", sudokuGrid.get());
-            return Views.EDIT_SUDOKU;
-        }
-        model.addAttribute("error", String.format("No sudoku with id: %d", id));
-        return Views.ERROR;
+        SudokuGrid sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
+        model.addAttribute("sudoku", sudokuGrid);
+        return Views.EDIT_SUDOKU;
     }
 
     @GetMapping("/sudoku/delete/{id}")
     public String getDeletePage(Model model, @PathVariable long id) {
-        Optional<SudokuGrid> sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
-        if (sudokuGrid.isPresent()) {
-            model.addAttribute("sudoku", sudokuGrid.get());
-            return Views.DELETE_SUDOKU;
-        }
-        model.addAttribute("error", String.format("No sudoku with id: %d", id));
-        return Views.ERROR;
+        SudokuGrid sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
+        model.addAttribute("sudoku", sudokuGrid);
+        return Views.DELETE_SUDOKU;
     }
 
 }

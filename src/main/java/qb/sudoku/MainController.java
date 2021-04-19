@@ -1,4 +1,4 @@
-package qb.sudoku.sudoku;
+package qb.sudoku;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

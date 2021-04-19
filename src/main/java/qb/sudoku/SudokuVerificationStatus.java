@@ -1,4 +1,4 @@
-package qb.sudoku.sudoku;
+package qb.sudoku;
 
 public enum SudokuVerificationStatus {
     RIGHT,

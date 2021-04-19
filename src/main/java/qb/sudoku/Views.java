@@ -1,4 +1,4 @@
-package qb.sudoku.sudoku;
+package qb.sudoku;
 
 public class Views {
     private Views(){

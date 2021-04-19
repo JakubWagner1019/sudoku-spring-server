@@ -1,4 +1,4 @@
-package qb.sudoku.sudoku;
+package qb.sudoku;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +15,7 @@ public interface SudokuService {
      * @param id Sudoku's id, usually provided by SudokuSignature.getId() or addSudoku(String,Sudoku)
      * @return Sudoku's grid (only given digits)
      */
-    Optional<SudokuGrid> getUnsolvedSudokuById(long id);
+    SudokuGrid getUnsolvedSudokuById(long id);
 
     /**
      * @param id Sudoku's id, usually provided by SudokuSignature.getId() or addSudoku(String,Sudoku)
@@ -34,22 +34,19 @@ public interface SudokuService {
     /**
      * @param id Id of sudoku for which the solution is submitted
      * @param solved Solution's sudoku grid
-     * @return True if operation successful, false if not
      */
-    boolean addSolution(long id, SudokuGrid solved);
+    void addSolution(long id, SudokuGrid solved);
 
 
     /**
      * @param id Id of sudoku to be deleted
-     * @return True if operation successful, false if not
      */
-    boolean deleteSudoku(long id);
+    void deleteSudoku(long id);
 
     /**
      * @param id Id of sudoku to be added to favourites
-     * @return True if operation successful, false if not
      */
-    boolean makeSudokuFavourite(long id);
+    void makeSudokuFavourite(long id);
 
 
     /**
