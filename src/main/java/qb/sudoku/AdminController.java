@@ -39,11 +39,12 @@ public class AdminController {
     }
 
     @PostMapping("/sudoku/create")
-    public String doCreate(@RequestParam(name = "name") String name, @RequestParam(name = "param[]") String[] params) {
+    public String doCreate(@RequestParam(name = "name") String name, @RequestParam(name = "number[]") String[] number, @RequestParam(name = "given[]") String[] given) {
         logger.info("Creating");
         logger.info(name);
-        logger.info("{}", Arrays.asList(params));
-        SudokuGrid unsolved = convert(params);
+        logger.info("{}", Arrays.asList(number));
+        logger.info("{}", Arrays.asList(given));
+        SudokuGrid unsolved = convert(number);
         sudokuService.addSudoku(name, unsolved, null);
         return "redirect:/admin";
     }
