@@ -1,4 +1,4 @@
-package qb.sudoku;
+package qb.sudoku.presentation;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import qb.sudoku.models.SudokuGrid;
+import qb.sudoku.service.SudokuService;
+import qb.sudoku.models.SudokuSignature;
+import qb.sudoku.models.TableBasedSudokuGrid;
 
 import java.util.Arrays;
 import java.util.List;

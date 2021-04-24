@@ -1,8 +1,12 @@
-package qb.sudoku;
+package qb.sudoku.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import qb.sudoku.models.SudokuGrid;
+import qb.sudoku.repositories.SudokuGridRepository;
+import qb.sudoku.models.SudokuSignature;
+import qb.sudoku.repositories.SudokuSignatureRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;

@@ -1,4 +1,4 @@
-package qb.sudoku;
+package qb.sudoku.models;
 
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeBasedTable;
@@ -15,7 +15,6 @@ public class TableBasedSudokuGrid implements SudokuGrid {
     public TableBasedSudokuGrid(int sideLength) {
         this.sideLength = sideLength;
     }
-
 
     @Override
     public void addElement(int row, int column, int value) {

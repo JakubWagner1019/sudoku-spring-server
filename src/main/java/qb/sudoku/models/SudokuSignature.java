@@ -1,4 +1,4 @@
-package qb.sudoku;
+package qb.sudoku.models;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

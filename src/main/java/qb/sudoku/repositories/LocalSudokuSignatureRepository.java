@@ -1,7 +1,8 @@
-package qb.sudoku;
+package qb.sudoku.repositories;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
+import qb.sudoku.models.SudokuSignature;
 
 import java.util.ArrayList;
 import java.util.HashMap;

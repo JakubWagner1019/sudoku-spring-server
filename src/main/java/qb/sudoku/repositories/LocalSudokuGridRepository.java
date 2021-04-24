@@ -1,8 +1,9 @@
-package qb.sudoku;
+package qb.sudoku.repositories;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
+import qb.sudoku.models.SudokuGrid;
 
 import java.util.HashMap;
 import java.util.Map;

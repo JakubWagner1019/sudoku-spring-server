@@ -2,6 +2,10 @@ package qb.sudoku;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import qb.sudoku.models.SudokuGrid;
+import qb.sudoku.models.TableBasedSudokuGrid;
+import qb.sudoku.repositories.LocalSudokuGridRepository;
+import qb.sudoku.repositories.SudokuGridRepository;
 
 import java.util.Optional;
 

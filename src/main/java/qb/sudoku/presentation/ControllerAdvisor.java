@@ -1,4 +1,4 @@
-package qb.sudoku;
+package qb.sudoku.presentation;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;

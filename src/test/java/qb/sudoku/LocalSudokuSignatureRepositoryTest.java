@@ -1,6 +1,9 @@
 package qb.sudoku;
 
 import org.junit.Test;
+import qb.sudoku.models.SudokuSignature;
+import qb.sudoku.repositories.LocalSudokuSignatureRepository;
+import qb.sudoku.repositories.SudokuSignatureRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;

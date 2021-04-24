@@ -1,6 +1,7 @@
-package qb.sudoku;
+package qb.sudoku.repositories;
 
 import org.springframework.lang.NonNull;
+import qb.sudoku.models.SudokuGrid;
 
 import java.util.Optional;
 

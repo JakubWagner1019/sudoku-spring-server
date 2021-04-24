@@ -1,4 +1,6 @@
-package qb.sudoku;
+package qb.sudoku.repositories;
+
+import qb.sudoku.models.SudokuSignature;
 
 import java.util.List;
 import java.util.Optional;
