@@ -8,14 +8,21 @@ body {
 }
 
 .sudoku-cell {
-    background-color: lightgrey;
     width: 50px;
     height: 50px;
     border: 1px solid black;
 }
 
-.sudoku-cell:hover {
-    background-color: azure;
+.sudoku-cell:not(.selected-sudoku-cell) {
+    background-color: #ffffff;
+}
+
+.sudoku-cell:not(.selected-sudoku-cell):hover {
+    background-color: #ddddff;
+}
+
+.sudoku-cell.selected-sudoku-cell {
+    background-color: #aaaaff;
 }
 
 .sudoku-cell > p {
@@ -24,3 +31,4 @@ body {
     font-size: 24px;
     text-align: center;
 }
+
