@@ -12,7 +12,7 @@
     <label for="name">Name</label>
     <input type="text" id="name" name="name">
     <div class="sudoku-table">
-        <div class="sudoku-row" th:each="i : ${#numbers.sequence(1,9)}"><!--
+        <div class="sudoku-row" th:each="i : ${#numbers.sequence(1,9)}"><!--this comment removes whitespace
         --><div class="sudoku-cell" th:each="j : ${#numbers.sequence(1,9)}">
                 <p></p>
                 <input type="hidden" name="number[]"/>
