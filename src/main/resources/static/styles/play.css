@@ -24,6 +24,14 @@ body {
     border: 1px solid black;
 }
 
+.sudoku-row > .sudoku-cell:nth-of-type(3), .sudoku-row > .sudoku-cell:nth-of-type(6) {
+    border-right: 2px solid red;
+}
+
+.sudoku-table > .sudoku-row:nth-of-type(4) > .sudoku-cell, .sudoku-table > .sudoku-row:nth-of-type(7) > .sudoku-cell {
+    border-top: 2px solid red;
+}
+
 .sudoku-cell:not(.selected-sudoku-cell) {
     background-color: #ffffff;
 }
@@ -37,7 +45,12 @@ body {
 }
 
 .sudoku-cell > p {
-    font-size: 24px;
+    line-height: 50px;
+    overflow: hidden;
+    height: 100%;
+    text-align: center;
+    font-size: 30px;
+    vertical-align: middle;
 }
 
 #digit-selection {

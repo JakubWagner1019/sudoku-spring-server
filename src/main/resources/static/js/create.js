@@ -12,8 +12,8 @@ let given = true;
 function setSelectedValue(value) {
     if (selected != null) {
         selected.innerHTML =
-            "<p>" + value + "</p>\n" +
-            "<input type='hidden' name='number[]' value='" + value + "'/>\n" +
+            "<p>" + value + "</p>" +
+            "<input type='hidden' name='number[]' value='" + value + "'/>" +
             "<input type='hidden' name='given[]' value='" + given + "'/>"
     }
 }
@@ -24,8 +24,8 @@ function toggleGiven(){
 
 function clearSelected() {
     selected.innerHTML =
-        "<p></p>\n" +
-        "<input type='hidden' name='number[]'/>\n" +
+        "<p></p>" +
+        "<input type='hidden' name='number[]'/>" +
         "<input type='hidden' name='given[]'/>"
 }
 
