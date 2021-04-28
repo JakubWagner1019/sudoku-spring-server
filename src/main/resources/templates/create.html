@@ -9,22 +9,24 @@
 <a th:href="@{/admin}">Back</a>
 <p id="Modifiable">Modifiable</p>
 <form th:action="@{/admin/sudoku/create}" method="post">
-    <label for="name"></label>
+    <label for="name">Name</label>
     <input type="text" id="name" name="name">
-    <table id="sudoku-table">
-        <tr th:each="i : ${#numbers.sequence(1,9)}">
-            <td class="sudoku-cell" th:each="j : ${#numbers.sequence(1,9)}">
+    <div class="sudoku-table">
+        <div class="sudoku-row" th:each="i : ${#numbers.sequence(1,9)}"><!--
+        --><div class="sudoku-cell" th:each="j : ${#numbers.sequence(1,9)}">
                 <p></p>
                 <input type="hidden" name="number[]"/>
                 <input type="hidden" name="given[]"/>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
     <input type="submit" name="Submit"/>
 </form>
 <div id="digit-selection">
     <div class="digit-selection-cell" th:text="${i}" th:each="i : ${#numbers.sequence(1,9)}">
     </div>
+</div>
+<div id="tools">
     <div id="remove-button">
         X
     </div>
