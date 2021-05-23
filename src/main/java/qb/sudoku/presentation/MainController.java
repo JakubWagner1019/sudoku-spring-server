@@ -4,8 +4,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import qb.sudoku.service.SudokuService;
 import qb.sudoku.models.SudokuSignature;
+import qb.sudoku.service.SudokuService;
 
 import java.util.List;
 
@@ -20,10 +20,10 @@ public class MainController {
     }
 
     @GetMapping
-    public String doGet(Model model){
+    public String doGet(Model model) {
         List<SudokuSignature> sudokuSignatures = sudokuService.getSudokuSignatures();
-        model.addAttribute("name","Sir");
-        model.addAttribute("sudokuList",sudokuSignatures);
+        model.addAttribute("name", "Sir");
+        model.addAttribute("sudokuList", sudokuSignatures);
         return Views.INDEX;
     }
 }

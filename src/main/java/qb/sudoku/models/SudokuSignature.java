@@ -38,7 +38,7 @@ public class SudokuSignature {
         return localDateTime;
     }
 
-    public String getFormattedLocalDateTime(){
+    public String getFormattedLocalDateTime() {
         return localDateTime.format(DATE_TIME_FORMATTER);
     }
 }

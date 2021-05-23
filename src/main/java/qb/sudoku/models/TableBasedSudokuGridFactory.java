@@ -6,6 +6,10 @@ import qb.sudoku.dto.SudokuGridDto;
 @Component
 public class TableBasedSudokuGridFactory implements SudokuGridFactory {
 
+    private static SudokuGrid getNewSudokuGrid(int sideLength) {
+        return new TableBasedSudokuGrid(sideLength);
+    }
+
     @Override
     public SudokuGrid getUnsolvedGrid(SudokuGridDto gridDto) {
         int sideLength = gridDto.getGrid().length;
@@ -36,10 +40,6 @@ public class TableBasedSudokuGridFactory implements SudokuGridFactory {
             }
         }
         return grid;
-    }
-
-    private static SudokuGrid getNewSudokuGrid(int sideLength) {
-        return new TableBasedSudokuGrid(sideLength);
     }
 
 }

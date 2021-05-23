@@ -11,8 +11,8 @@ import java.util.NoSuchElementException;
 @ControllerAdvice
 public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({NoSuchElementException.class,IllegalArgumentException.class})
-    public ModelAndView handleException(Exception e){
+    @ExceptionHandler({NoSuchElementException.class, IllegalArgumentException.class})
+    public ModelAndView handleException(Exception e) {
         logger.error(e.getMessage());
         ModelAndView modelAndView = new ModelAndView(Views.ERROR);
         modelAndView.addObject("error", e.getMessage());

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import qb.sudoku.dto.SudokuGridDto;
 import qb.sudoku.models.SudokuGrid;
 import qb.sudoku.models.SudokuGridFactory;
-import qb.sudoku.service.SudokuService;
 import qb.sudoku.models.SudokuSignature;
+import qb.sudoku.service.SudokuService;
 
 import java.util.List;
 
@@ -21,10 +21,9 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    Logger logger = LoggerFactory.getLogger(AdminController.class);
-
     private final SudokuService sudokuService;
     private final SudokuGridFactory sudokuGridFactory;
+    Logger logger = LoggerFactory.getLogger(AdminController.class);
 
     public AdminController(SudokuService sudokuService, SudokuGridFactory sudokuGridFactory) {
         this.sudokuService = sudokuService;

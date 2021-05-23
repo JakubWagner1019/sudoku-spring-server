@@ -23,7 +23,7 @@ public class LocalSudokuSignatureRepository implements SudokuSignatureRepository
 
             throw new IllegalArgumentException("Tried creating signature with null/empty name");
         }
-        if (signatureStorage.containsKey(id)){
+        if (signatureStorage.containsKey(id)) {
             throw new IllegalArgumentException("Id already exists");
         }
         SudokuSignature sudokuSignature = new SudokuSignature(name, id);
@@ -42,7 +42,7 @@ public class LocalSudokuSignatureRepository implements SudokuSignatureRepository
 
     @Override
     public void delete(long id) {
-        if (!signatureStorage.containsKey(id)){
+        if (!signatureStorage.containsKey(id)) {
             throw new NoSuchElementException("Tried deleting nonexistent signature");
         }
         signatureStorage.remove(id);

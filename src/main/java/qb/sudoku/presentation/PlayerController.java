@@ -20,14 +20,14 @@ public class PlayerController {
     }
 
     @GetMapping("/play/{id}")
-    public String getSudoku(Model model, @PathVariable int id){
+    public String getSudoku(Model model, @PathVariable int id) {
         SudokuGrid sudokuGrid = sudokuService.getUnsolvedSudokuById(id);
-        model.addAttribute("sudoku",sudokuGrid);
+        model.addAttribute("sudoku", sudokuGrid);
         return Views.PLAY;
     }
 
     @GetMapping("/verify/{id}")
-    public String verifySudoku(@RequestParam(name = "number[]") String[] number, Model model, @PathVariable int id){
+    public String verifySudoku(@RequestParam(name = "number[]") String[] number, Model model, @PathVariable int id) {
         throw new UnsupportedOperationException("Not implemented yet");
         //sudokuService.verify(id, )
     }
