@@ -8,28 +8,31 @@
 <h1>Creating sudoku</h1>
 <a th:href="@{/admin}">Back</a>
 <p id="Modifiable">Modifiable</p>
-<form th:action="@{/admin/sudoku/create}" method="post">
+<form method="post" th:action="@{/admin/sudoku/create}" th:object="${form}">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" th:field="*{name}">
     <div class="sudoku-table">
-        <div class="sudoku-row" th:each="i : ${#numbers.sequence(1,9)}"><!--this comment removes whitespace
-        --><div class="sudoku-cell" th:each="j : ${#numbers.sequence(1,9)}">
-                <p></p>
-                <input type="hidden" name="number[]"/>
-                <input type="hidden" name="given[]"/>
+        <div class="sudoku-row" th:each="list, itemStat : *{grid}"><!--comment removes whitespace
+         --><div th:with="value=*{grid[__${itemStat.index}__][__${itemStat2.index}__].value}"
+                 class="sudoku-cell" th:each="list2, itemStat2 : ${list}">
+                <p th:id="${itemStat.index}+'.'+${itemStat2.index}+'.text'"
+                   th:text="${value == 0 ? '' : value}"></p>
+                <input type="hidden"
+                       th:field="*{grid[__${itemStat.index}__][__${itemStat2.index}__].value}">
+                <input type="hidden"
+                       th:field="*{grid[__${itemStat.index}__][__${itemStat2.index}__].given}">
             </div>
         </div>
     </div>
-    <input type="submit" name="Submit"/>
+    <input type="submit" value="Submit"/>
 </form>
 <div id="digit-selection">
     <div class="digit-selection-cell" th:text="${i}" th:each="i : ${#numbers.sequence(1,9)}">
     </div>
 </div>
 <div id="tools">
-    <div id="remove-button">
-        X
-    </div>
+    <button onclick="clearSelected()">Clear</button>
+    <button onclick="toggleGiven()">Given</button>
 </div>
 <script type="text/javascript" th:src="@{/js/create.js}"></script>
 </body>

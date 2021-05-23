@@ -11,13 +11,14 @@
 <div>
 </div>
 <a th:href="@{/}">Back</a>
-<table id="sudoku-table">
-    <tr th:each="i : ${#numbers.sequence(1,9)}">
-        <td class="sudoku-cell" th:each="j : ${#numbers.sequence(1,9)}">
-            <p th:with="element=${sudoku.getElement(i,j)}"
-               th:text="${element != null ? element: ''}"></p>
-        </td>
-    </tr>
-</table>
+
+<div class="sudoku-table">
+    <div class="sudoku-row" th:each="i : ${#numbers.sequence(1,9)}"><!--this comment removes whitespace
+    --><div class="sudoku-cell" th:with="element=${sudoku.getElement(i,j)}" th:each="j : ${#numbers.sequence(1,9)}">
+        <p th:text="${element != null ? element: ''}" ></p>
+        <input type="hidden" name="number[]" th:value="${element != null ? element: ''}"/>
+        </div>
+    </div>
+</div>
 </body>
 </html>

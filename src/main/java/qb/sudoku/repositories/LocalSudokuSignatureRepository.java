@@ -20,6 +20,7 @@ public class LocalSudokuSignatureRepository implements SudokuSignatureRepository
     @Override
     public void create(long id, String name) {
         if (name == null || name.isEmpty()) {
+
             throw new IllegalArgumentException("Tried creating signature with null/empty name");
         }
         if (signatureStorage.containsKey(id)){

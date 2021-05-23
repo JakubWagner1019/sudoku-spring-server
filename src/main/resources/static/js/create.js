@@ -11,25 +11,44 @@ let given = true;
 
 function setSelectedValue(value) {
     if (selected != null) {
-        selected.innerHTML =
-            "<p>" + value + "</p>" +
-            "<input type='hidden' name='number[]' value='" + value + "'/>" +
-            "<input type='hidden' name='given[]' value='" + given + "'/>"
+        setCellNumber(selected, value, given)
     }
 }
 
-function toggleGiven(){
+function toggleGiven() {
     given = !given;
 }
 
 function clearSelected() {
-    selected.innerHTML =
-        "<p></p>" +
-        "<input type='hidden' name='number[]'/>" +
-        "<input type='hidden' name='given[]'/>"
+    if (selected != null) {
+        clearCell(selected)
+    }
 }
 
-function chooseNewSelected(cell){
+function getChildByIdSuffix(cell, idSuffix) {
+    for (let i = 0; i < cell.children.length; i++) {
+        let current = cell.children[i];
+        let id = current.id;
+        if (id.includes(idSuffix)) {
+            return current;
+        }
+    }
+}
+
+function getCellText(cell) {
+    return getChildByIdSuffix(cell, "text");
+}
+
+function getCellValue(cell) {
+    return getChildByIdSuffix(cell, "value");
+}
+
+function getCellGiven(cell) {
+    return getChildByIdSuffix(cell, "given")
+}
+
+
+function chooseNewSelected(cell) {
     //clear previous selected
     if (selected != null) {
         selected.classList.toggle(selectedClassName);
@@ -37,9 +56,41 @@ function chooseNewSelected(cell){
     //make new selected
     selected = cell;
     selected.classList.toggle(selectedClassName);
+    //console.log(selected.children)
+    console.log(getCellState(selected))
 }
 
-function main(){
+function getCellState(cell) {
+    return {
+        text: getCellText(cell).innerHTML,
+        value: getCellValue(cell).value,
+        given: getCellGiven(cell).value
+    }
+}
+
+function setCellNumber(cell, number, isGiven) {
+    setCellState(cell, {
+        text: number,
+        value: number,
+        given: isGiven
+    })
+}
+
+function clearCell(cell) {
+    setCellState(cell, {
+        text: '',
+        value: 0,
+        given: false
+    })
+}
+
+function setCellState(cell, state) {
+    getCellText(cell).innerHTML = state.text
+    getCellValue(cell).value = state.value
+    getCellGiven(cell).value = state.given
+}
+
+function main() {
     modifiable.innerHTML = "Modified"
 
     for (let i = 0; i < digitSelectionCells.length; i++) {
@@ -56,7 +107,7 @@ function main(){
         })
     }
 
-    removeButton.addEventListener("click", function (){
+    removeButton.addEventListener("click", function () {
         clearSelected()
     })
 }
